@@ -99,6 +99,7 @@ score = 0 #Sets the score to zero when the game starts
 bonus = 0
 end = time() + TIME_LIMIT #Stores the finish time in a variable called “end”
 
+
 #MAIN GAME LOOP
 while time() < end: #Repeats the main game loop until the game ends
     if randint(1, BUB_CHANCE) == 1: #If the random number is 1, the program creates a new bubble (on average 1 in 10 times – so there aren’t too many bubbles!)
@@ -114,10 +115,12 @@ while time() < end: #Repeats the main game loop until the game ends
     print(score) #Shows the score in the shell window – it will be displayed properly later
     window.update() #Updates the window to redraw bubbles that have moved
     sleep(0.01) #Slows the game down so it’s not too fast to play
-
+    
 c.create_text(MID_X, MID_Y,  #Puts graphic in the middle of the screen
     text='GAME OVER', fill='white', font=('Helvetica',30)) #Sets the font – “Helvetica” is a good font for big letters
 c.create_text(MID_X, MID_Y + 30, 
     text='Score: '+ str(score), fill='white') #Tells you what your score was
 c.create_text(MID_X, MID_Y + 45, 
     text='Bonus time: '+ str(bonus*TIME_LIMIT), fill='white') #Sets the text colour to white
+
+

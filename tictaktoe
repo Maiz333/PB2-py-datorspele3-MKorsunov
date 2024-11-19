@@ -1,0 +1,141 @@
+import modul_user_interface
+
+SIZE_OF_FIELD = 3
+
+GAME_OVER = False
+
+game_field = []
+
+player_name = ['player lst','player 2nd']
+
+row_num = 0
+col_num = 0
+
+speletaja_nr = 0
+the_game_winner = -1
+
+def show_game_rules():
+    pass
+
+def show_menu():
+    pass
+
+def show_player_message(player_name: list, plr_num: int):
+    print()
+    print(player_name_local[plr_num], 'symbol: ', 'X' if plr_num == 0 else '0')
+    
+def show_field(cz):
+    for row in range(sz):
+        for col in range(sz):
+            print(game_field[row][col], end='')
+        print()   
+    
+def chk_cell(row_num2 : int, col_num2 : int, plr_sym2 : str):
+    if game_field[row_num2][col_num2] == 5:
+        return True
+    else:
+        return False 
+    pass
+
+def user_input(plr_num2:int):
+    global row_num
+    global col_num
+    if plr_num2 == 0:
+        plr_sym ='X'
+    else:
+        plr_sym ='0'
+        
+    row_num = int(input('Input row number from 0 to ' + str(SIZE_OF_FIELD-1) + ' include: '))
+    col_num = int(input('Input column number from 0 to ' + str(SIZE_OF_FIELD - 1) + ' include: '))
+    input_is_ok = chk_cell(row_num, col_num, plr_sym)
+    while not input_is_ok:
+        print('\nInput error!!! Cell isn\'t empty or number is incorect.\n')
+        row_num = int(input('Input row number from 0 to ' + str(SIZE_OF_FIELD-1) + ' include: '))
+        col_num = int(input('Input column number from 0 to ' + str(SIZE_OF_FIELD - 1) + ' include: '))
+        input_is_ok = chk_cell(row_num, col_num, plr_sym)
+    
+             
+def show_field(sz):
+    for row in range(sz):
+        for col in range(sz):
+            print(game_field[row][col], end='')
+        print()
+
+def game_field_change(plr_num3 : int) :
+    game_field[row_num][col_num] = 'X' if plr_num3 == 0 else '0'
+
+def start_game(gsize):
+    show_field(gsize)
+
+def chk_winner(plr_num4):
+    global GAME_OVER
+    
+    if plr_num4 == 0:
+        plr_sym = 'X'
+    else:
+        plr_sym = '0'
+        
+    if game_field[0][0] == plr_sym and game_field[0][1] == plr_sym and game_field[0][2] == plr_sym:
+        print('Player', plr_sym, 'WIN!')
+        GAME_OVER = True
+        return 0 if plr_sym == 'x' else 1 if plr_sym == '0' else 2
+    if game_field[1][0] == plr_sym and game_field[1][1] == plr_sym and game_field[1][2] == plr_sym:
+        print('Player', plr_sym, 'WIN!')
+        GAME_OVER = True
+        return 0 if plr_sym == 'x' else 1 if plr_sym == '0' else 2
+    if game_field[2][0] == plr_sym and game_field[2][1] == plr_sym and game_field[2][2] == plr_sym:
+        print('Player', plr_sym, 'WIN!')
+        GAME_OVER = True
+        return 0 if plr_sym == 'x' else 1 if plr_sym == '0' else 2
+        print('Player', plr_sym, 'WIN!')
+        GAME_OVER = True
+        return 0 if plr_sym == 'x' else 1 if plr_sym == '0' else 2
+    if game_field[0][1] == plr_sym and game_field[1][1] == plr_sym and game_field[2][1] == plr_sym:
+        print('Player', plr_sym, 'WIN!')
+        GAME_OVER = True
+        return 0 if plr_sym == 'x' else 1 if plr_sym == '0' else 2
+    if game_field[0][2] == plr_sym and game_field[1][2] == plr_sym and game_field[0][2] == plr_sym:
+        print('Player', plr_sym, 'WIN!')
+        GAME_OVER = True
+        return 0 if plr_sym == 'x' else 1 if plr_sym == '0' else 2
+    #not optimal code
+def show_in_end_of_game(game_winn):
+    if game_winn == 0:
+        print('\n\nWinner is Player 1st which was playing with \'X\'.\n\n')
+    else:
+        if game_winn == 1:
+            print('\n\nWinner is Player 2st which was playing with \'0\'.\n\n' )
+        else:
+            print('\n\nDraw. No winner. \n\n')
+
+def play_game():
+    global speletaja_nr
+    show_player_message(speletaja_nr % 2)
+    user_input(speletaja_nr % 2)
+    game_field_change(speletaja_nr % 2)
+    chk_winner(speletaja_nr % 2)
+
+    show_field(SIZE_OF_FIELD)
+    speletaja_nr += 1
+
+def main(args):
+    global SIZE_OF_FIELD
+    global game_field
+
+    SIZE_OF_FIELD = int(args[1])
+    print(SIZE_OF_FIELD)
+
+    game_field = [ [5 for cols in range(SIZE_OF_FIELD)] for rows in range(SIZE_OF_FIELD)]
+
+    start_game(SIZE_OF_FIELD)
+
+    while not GAME_OVER and speletaja_nr <= SIZE_OF_FIELD * SIZE_OF_FIELD:
+        play_game()
+
+    show_in_end_of_game(the_game_winner) # 0 kad 'x', 1 kad '0', 2 kad neizšķirts
+    print('GAME OVER!!!')
+    return 0
+
+if __name__ == '__main__':
+    import sys
+    sys.exit(main(sys.argv))
