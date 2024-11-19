@@ -13,3 +13,19 @@ MID_X = WIDTH / 2 #The variables “MID_X” and “MID_Y” give the co-ordinat
 MID_Y = HEIGHT / 2
 c.move(ship_id, MID_X, MID_Y) #Moves both parts of the submarine to the centre of the screen
 c.move(ship_id2, MID_X, MID_Y)
+
+SHIP_SPD = 10 #The sub will move this far when a key is pressed
+def move_ship(event):
+    if event.keysym == 'Up':
+        c.move(ship_id, 0, -SHIP_SPD) #Moves the two parts of the sub up when the up arrow key is pressed
+        c.move(ship_id2, 0, -SHIP_SPD)
+    elif event.keysym == 'Down':
+        c.move(ship_id, 0, SHIP_SPD) #These lines are activated when the down arrow key is pressed, and the sub moves down
+        c.move(ship_id2, 0, SHIP_SPD)
+    elif event.keysym == 'Left':
+        c.move(ship_id, -SHIP_SPD, 0) #The sub moves left when the left arrow key is pressed
+        c.move(ship_id2, -SHIP_SPD, 0)
+    elif event.keysym == 'Right':
+        c.move(ship_id, SHIP_SPD, 0) #Moves the sub right when the right arrow key is pressed
+        c.move(ship_id2, SHIP_SPD, 0)
+c.bind_all('<Key>', move_ship) #Tells Python to run “move_ship” whenever any key is pressed
