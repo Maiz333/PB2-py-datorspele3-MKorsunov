@@ -56,6 +56,11 @@ def get_coords(id_num):
     x = (pos[0] + pos[2])/2 #Works out the x co-ordinate of the middle of the bubble
     y = (pos[1] + pos[3])/2 #Works out the y co-ordinate of the middle of the bubble
     return x, y
+def del_bubble(i): #This function deletes the bubble with ID “i”
+    del bub_r[i]
+    del bub_speed[i] #Deletes the bubble from the radius and speed lists
+    c.delete(bub_id[i]) #Deletes the bubble from the canvas
+    del bub_id[i] #Deletes the bubble from the ID list
 
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
