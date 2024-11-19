@@ -74,6 +74,14 @@ def distance(id1, id2):
     x2, y2 = get_coords(id2) #Gets the position of the second object
     return sqrt((x2 - x1)**2 + (y2 - y1)**2) #Gives back the distance between them
 
+def collision():
+    points = 0 #This variable keeps track of points scored
+    for bub in range(len(bub_id)-1, -1, -1): #This loop goes through the entire list of bubbles (it goes backwards to avoid errors when deleting bubbles)
+        if distance(ship_id2, bub_id[bub]) < (SHIP_R + bub_r[bub]): #Checks for collisions between the sub and any bubbles
+            points += (bub_r[bub] + bub_speed[bub]) #Calculates the number of points this bubble is worth and adds it to “points”
+            del_bubble(bub) #Deletes the bubble
+    return points #Gives back the number of points
+
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
 #MAIN GAME LOOP
