@@ -50,3 +50,13 @@ def create_bubble():
 def move_bubbles():
     for i in range(len(bub_id)): #Goes through each bubble in the list
         c.move(bub_id[i], -bub_speed[i], 0) #Moves the bubble across the screen according to its speed
+
+from time import sleep, time #mports the functions you need from the Time library
+BUB_CHANCE = 10
+#MAIN GAME LOOP
+while True:
+    if randint(1, BUB_CHANCE) == 1: #If the random number is 1, the program creates a new bubble (on average 1 in 10 times – so there aren’t too many bubbles!)
+        create_bubble()
+    move_bubbles() #Runs the “move_bubbles” function
+    window.update() #Updates the window to redraw bubbles that have moved
+    sleep(0.01) #Slows the game down so it’s not too fast to play
