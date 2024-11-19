@@ -1,0 +1,7 @@
+from tkinter import * #Imports all of the Tkinter functions
+HEIGHT = 500
+WIDTH = 800  #Sets the size of the window
+window = Tk()
+window.title('Bubble Blaster') #Give the game a snappy title
+c = Canvas(window, width=WIDTH, height=HEIGHT, bg='darkblue') #Sets dark blue as the colour of the background (the sea)
+c.pack()
