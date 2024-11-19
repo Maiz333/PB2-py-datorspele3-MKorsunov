@@ -51,6 +51,12 @@ def move_bubbles():
     for i in range(len(bub_id)): #Goes through each bubble in the list
         c.move(bub_id[i], -bub_speed[i], 0) #Moves the bubble across the screen according to its speed
 
+def get_coords(id_num): 
+    pos = c.coords(id_num)
+    x = (pos[0] + pos[2])/2 #Works out the x co-ordinate of the middle of the bubble
+    y = (pos[1] + pos[3])/2 #Works out the y co-ordinate of the middle of the bubble
+    return x, y
+
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
 #MAIN GAME LOOP
@@ -60,3 +66,4 @@ while True:
     move_bubbles() #Runs the “move_bubbles” function
     window.update() #Updates the window to redraw bubbles that have moved
     sleep(0.01) #Slows the game down so it’s not too fast to play
+
