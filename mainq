@@ -29,3 +29,20 @@ def move_ship(event):
         c.move(ship_id, SHIP_SPD, 0) #Moves the sub right when the right arrow key is pressed
         c.move(ship_id2, SHIP_SPD, 0)
 c.bind_all('<Key>', move_ship) #Tells Python to run “move_ship” whenever any key is pressed
+
+from random import randint
+bub_id = list() #This creates three empty lists used to store the ID, radius (size), and speed of each bubble
+bub_r = list()
+bub_speed = list()
+MIN_BUB_R = 10 #Sets the minimum radius of the bubble to 10, and the maximum to 30
+MAX_BUB_R = 30
+MAX_BUB_SPD = 10
+GAP = 100
+def create_bubble():
+    x = WIDTH + GAP #Sets the position of the bubble on the canvas
+    y = randint(0, HEIGHT)
+    r = randint(MIN_BUB_R, MAX_BUB_R) #Picks a random size for the bubble, between the maximum and minimum values possible
+    id1 = c.create_oval(x - r, y - r, x + r, y + r, outline='white') #This line of code creates the bubble shape
+    bub_id.append(id1) #Adds the ID, radius, and speed of the bubble to the three lists
+    bub_r.append(r)
+    bub_speed.append(randint(1, MAX_BUB_SPD))
