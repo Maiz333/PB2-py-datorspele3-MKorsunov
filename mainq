@@ -5,3 +5,11 @@ window = Tk()
 window.title('Bubble Blaster') #Give the game a snappy title
 c = Canvas(window, width=WIDTH, height=HEIGHT, bg='darkblue') #Sets dark blue as the colour of the background (the sea)
 c.pack()
+
+ship_id = c.create_polygon(5, 5, 5, 25, 30, 15, fill='red')
+ship_id2 = c.create_oval(0, 0, 30, 30, outline='red') #Draws a red circle outline
+SHIP_R = 15 #The radius (size) of the submarine
+MID_X = WIDTH / 2 #The variables “MID_X” and “MID_Y” give the co-ordinates of the middle of the screen
+MID_Y = HEIGHT / 2
+c.move(ship_id, MID_X, MID_Y) #Moves both parts of the submarine to the centre of the screen
+c.move(ship_id2, MID_X, MID_Y)
