@@ -93,8 +93,12 @@ def show_time(time_left):
 
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
-
+TIME_LIMIT = 30 #Starts the game with a 30-second time limit
+BONUS_SCORE = 1000 #Sets when bonus time is given (when a player has scored 1,000 points)
 score = 0 #Sets the score to zero when the game starts
+bonus = 0
+end = time() + TIME_LIMIT #Stores the finish time in a variable called “end”
+
 #MAIN GAME LOOP
 while True:
     if randint(1, BUB_CHANCE) == 1: #If the random number is 1, the program creates a new bubble (on average 1 in 10 times – so there aren’t too many bubbles!)
