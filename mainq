@@ -62,6 +62,12 @@ def del_bubble(i): #This function deletes the bubble with ID “i”
     c.delete(bub_id[i]) #Deletes the bubble from the canvas
     del bub_id[i] #Deletes the bubble from the ID list
 
+def clean_up_bubs():
+    for i in range(len(bub_id)-1, -1, -1): #This goes through the bubble list backwards to avoid the “for” loop causing an error when bubbles are deleted
+        x, y = get_coords(bub_id[i]) #Finds out where the bubble is
+        if x < -GAP:
+            del_bubble(i)#If the bubble is off the screen then it is deleted – otherwise it would slow the game down
+
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
 #MAIN GAME LOOP
