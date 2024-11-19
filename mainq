@@ -46,3 +46,7 @@ def create_bubble():
     bub_id.append(id1) #Adds the ID, radius, and speed of the bubble to the three lists
     bub_r.append(r)
     bub_speed.append(randint(1, MAX_BUB_SPD))
+
+def move_bubbles():
+    for i in range(len(bub_id)): #Goes through each bubble in the list
+        c.move(bub_id[i], -bub_speed[i], 0) #Moves the bubble across the screen according to its speed
