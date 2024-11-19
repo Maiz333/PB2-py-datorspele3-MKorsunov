@@ -82,6 +82,15 @@ def collision():
             del_bubble(bub) #Deletes the bubble
     return points #Gives back the number of points
 
+c.create_text(50, 30, text='TIME', fill='white' ) #Creates “TIME” and “SCORE” labels to explain to the player what the numbers mean
+c.create_text(150, 30, text='SCORE', fill='white' )
+time_text = c.create_text(50, 50, fill='white' ) #Sets the scores and time remaining
+score_text = c.create_text(150, 50, fill='white' )
+def show_score(score):
+    c.itemconfig(score_text, text=str(score)) #Displays the score
+def show_time(time_left):
+    c.itemconfig(time_text, text=str(time_left)) #Displays the time remaining
+
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
 
