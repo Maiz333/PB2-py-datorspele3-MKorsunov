@@ -68,6 +68,12 @@ def clean_up_bubs():
         if x < -GAP:
             del_bubble(i)#If the bubble is off the screen then it is deleted – otherwise it would slow the game down
 
+from math import sqrt #Loads the “sqrt” function from the Math library
+def distance(id1, id2):
+    x1, y1 = get_coords(id1) #Gets the position of the first object
+    x2, y2 = get_coords(id2) #Gets the position of the second object
+    return sqrt((x2 - x1)**2 + (y2 - y1)**2) #Gives back the distance between them
+
 from time import sleep, time #mports the functions you need from the Time library
 BUB_CHANCE = 10
 #MAIN GAME LOOP
