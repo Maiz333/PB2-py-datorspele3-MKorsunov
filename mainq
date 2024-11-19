@@ -100,12 +100,17 @@ bonus = 0
 end = time() + TIME_LIMIT #Stores the finish time in a variable called “end”
 
 #MAIN GAME LOOP
-while True:
+while time() < end: #Repeats the main game loop until the game ends
     if randint(1, BUB_CHANCE) == 1: #If the random number is 1, the program creates a new bubble (on average 1 in 10 times – so there aren’t too many bubbles!)
         create_bubble()
     move_bubbles()#Runs the “move_bubbles” function 
     clean_up_bubs() #Removes bubbles that are off the screen
     score += collision() #Adds the bubble score to the total
+    if (int(score / BONUS_SCORE)) > bonus: #Calculates when to give bonus time
+        bonus += 1
+        end += TIME_LIMIT
+    show_score(score) #“print(score)” has been replaced by “show_score(score)” so that the score now appears in the game window
+    show_time(int(end - time())) #Displays the time remaining
     print(score) #Shows the score in the shell window – it will be displayed properly later
     window.update() #Updates the window to redraw bubbles that have moved
     sleep(0.01) #Slows the game down so it’s not too fast to play
