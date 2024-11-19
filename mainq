@@ -115,3 +115,9 @@ while time() < end: #Repeats the main game loop until the game ends
     window.update() #Updates the window to redraw bubbles that have moved
     sleep(0.01) #Slows the game down so it’s not too fast to play
 
+c.create_text(MID_X, MID_Y,  #Puts graphic in the middle of the screen
+    text='GAME OVER', fill='white', font=('Helvetica',30)) #Sets the font – “Helvetica” is a good font for big letters
+c.create_text(MID_X, MID_Y + 30, 
+    text='Score: '+ str(score), fill='white') #Tells you what your score was
+c.create_text(MID_X, MID_Y + 45, 
+    text='Bonus time: '+ str(bonus*TIME_LIMIT), fill='white') #Sets the text colour to white
