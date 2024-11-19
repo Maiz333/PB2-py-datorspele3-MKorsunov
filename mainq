@@ -74,7 +74,8 @@ BUB_CHANCE = 10
 while True:
     if randint(1, BUB_CHANCE) == 1: #If the random number is 1, the program creates a new bubble (on average 1 in 10 times – so there aren’t too many bubbles!)
         create_bubble()
-    move_bubbles() #Runs the “move_bubbles” function
+    move_bubbles()#Runs the “move_bubbles” function 
+    clean_up_bubs() #Removes bubbles that are off the screen
     window.update() #Updates the window to redraw bubbles that have moved
     sleep(0.01) #Slows the game down so it’s not too fast to play
 
